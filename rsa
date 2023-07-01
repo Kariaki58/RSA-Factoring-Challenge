@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+"""
+importing usefull modules
+sys: get the number of argument from argv to print the file
+math: to calculate the square root of number.
+"""
+from sys import argv
+from math import sqrt
+
+
+def factorize_numbers(number):
+    """factorize and print the number"""
+    conv = int(sqrt(number))
+    for i in range(2, conv + 1):
+        if number % i == 0:
+            value = int(number / i)
+            print("{}={}*{}".format(number, value, i))
+            break
+
+
+if __name__=="__main__":
+    try:
+        with open(argv[1], "r") as file:
+            list_obj = file.readlines()
+            for i in range(len(list_obj)):
+                factorize_numbers(int(list_obj[i]))
+    except:
+        print("file cannot be opened")
